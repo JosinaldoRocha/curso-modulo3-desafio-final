@@ -1,5 +1,7 @@
 import 'package:final_challenge/enums/task_enum.dart';
 import 'package:final_challenge/interfaces/task_interface.dart';
+import 'package:final_challenge/util/clean_screen.dart';
+import 'package:final_challenge/util/read.dart';
 
 class CampingModel implements TasksInterface {
   CampingModel({
@@ -181,6 +183,49 @@ class CampingModel implements TasksInterface {
     print('Sua energia: $_myEnergy');
     print('Seus pontos de experiência em acampamento: $_campingExperience');
     shift();
+  }
+
+  @override
+  void runTask() {
+    int option = 0;
+    do {
+      print('Escolha uma ação');
+      option = Read.readInt(
+          message:
+              '[1] Limpar local\n[2] Levantar acampamento\n[3] Preparar o almoço\n'
+              '[4] Preparar o jantar\n[5] Sair para caçar\n[6] Beber água\n'
+              '[7] Descansar\n[8] Momento de diversão\n[9] Jogar comida fora\n'
+              '[10] Esqueci a carne no fogo\n[11] Dormir\n[12] Finalizar atividade');
+
+      Clean.screen();
+      if (option == 1) {
+        cleanCampsite();
+      } else if (option == 2) {
+        setUpCamp();
+      } else if (option == 3) {
+        prepareLunch();
+      } else if (option == 4) {
+        prepareDinner();
+      } else if (option == 5) {
+        goOutHunting();
+      } else if (option == 6) {
+        drinkWater();
+      } else if (option == 7) {
+        resting();
+      } else if (option == 8) {
+        funMoment();
+      } else if (option == 9) {
+        wasteFood();
+      } else if (option == 10) {
+        burntFood();
+      } else if (option == 11) {
+        toSleep();
+      } else if (option == 12) {
+      } else {
+        print('Opção inválida');
+      }
+    } while (option != 12);
+    finishTask();
   }
 
   @override

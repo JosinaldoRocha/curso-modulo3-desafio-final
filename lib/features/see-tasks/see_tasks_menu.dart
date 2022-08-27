@@ -10,6 +10,7 @@ class SeeTasksMenu implements Page {
   @override
   void init() {
     Clean.screen();
+    final taskList = TaskList().getAll();
     if (taskList.isNotEmpty) {
       SeeTaskTitle().init();
 

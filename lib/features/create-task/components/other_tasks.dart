@@ -24,7 +24,7 @@ class OtherTasks implements Page {
       closingtime: closingtime,
     );
 
-    taskList.add(otherTasks);
+    TaskList().addTask(otherTasks);
 
     Clean.screen();
     print('-- Tarefa criada, com sucesso! --\n');

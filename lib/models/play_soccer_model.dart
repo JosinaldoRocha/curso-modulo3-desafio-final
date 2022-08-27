@@ -1,5 +1,7 @@
 import 'package:final_challenge/interfaces/task_interface.dart';
 import 'package:final_challenge/enums/task_enum.dart';
+import 'package:final_challenge/util/clean_screen.dart';
+import 'package:final_challenge/util/read.dart';
 
 class PlaySoccerModel implements TasksInterface {
   PlaySoccerModel({
@@ -209,4 +211,41 @@ class PlaySoccerModel implements TasksInterface {
 
   @override
   String name;
+
+  @override
+  void runTask() {
+    int option = 0;
+    do {
+      print('Escolha uma ação');
+      option = Read.readInt(
+          message: '[1] Correr\n[2] Cobrar escanteio\n[3] cobrar pênalti\n'
+              '[4] Marcar um gol\n[5] Chutar\n[6] Beber água\n[7] Descansar\n'
+              '[8] Ver gols marcados\n[9] Jogador machucado\n[10] Finalizar atividade');
+
+      Clean.screen();
+      if (option == 1) {
+        running();
+      } else if (option == 2) {
+        corner();
+      } else if (option == 3) {
+        takeAPenalty();
+      } else if (option == 4) {
+        newGoal();
+      } else if (option == 5) {
+        kick();
+      } else if (option == 6) {
+        drinkWater();
+      } else if (option == 7) {
+        resting();
+      } else if (option == 8) {
+        goalscored();
+      } else if (option == 9) {
+        isHurt();
+      } else if (option == 10) {
+      } else {
+        print('Opção inválida');
+      }
+    } while (option != 10);
+    finishTask();
+  }
 }

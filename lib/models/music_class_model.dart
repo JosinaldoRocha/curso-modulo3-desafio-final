@@ -1,5 +1,7 @@
 import 'package:final_challenge/enums/task_enum.dart';
 import 'package:final_challenge/interfaces/task_interface.dart';
+import 'package:final_challenge/util/clean_screen.dart';
+import 'package:final_challenge/util/read.dart';
 
 class MusicClassModel implements TasksInterface {
   MusicClassModel({
@@ -223,4 +225,45 @@ class MusicClassModel implements TasksInterface {
 
   @override
   TaskType taskType = TaskType.musica;
+
+  @override
+  void runTask() {
+    int option = 0;
+    do {
+      print('Escolha uma ação');
+      option = Read.readInt(
+          message:
+              '[1] Estudando música\n[2] Treinar acordes/notas\n[3] Pausa na aula\n'
+              '[4] Parar de treinar acordes/notas\n[5] Fazer uma apresentação musical\n[6] Beber água\n'
+              '[7] Descansar\n[8] Aprender novo acorde/nota\n[9] Ver quantos acordes/notas aprendi\n'
+              '[10] Ver meu nível como músico\n[11] Finalizar atividade');
+
+      Clean.screen();
+      if (option == 1) {
+        studyingMusic();
+      } else if (option == 2) {
+        trainingChordsOrNotes();
+      } else if (option == 3) {
+        isNotStudying();
+      } else if (option == 4) {
+        isNotTraining();
+      } else if (option == 5) {
+        musicalPerformance();
+      } else if (option == 6) {
+        drinkWater();
+      } else if (option == 7) {
+        resting();
+      } else if (option == 8) {
+        newChordOrNote();
+      } else if (option == 9) {
+        chordsOrNotesLearned();
+      } else if (option == 10) {
+        seeMusicianLevel();
+      } else if (option == 11) {
+      } else {
+        print('Opção inválida');
+      }
+    } while (option != 11);
+    finishTask();
+  }
 }

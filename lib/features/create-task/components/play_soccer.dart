@@ -1,10 +1,11 @@
+import 'package:final_challenge/enums/task_enum.dart';
 import 'package:final_challenge/interfaces/page_interface.dart';
-import 'package:final_challenge/models/music_class_model.dart';
+import 'package:final_challenge/models/play_soccer_model.dart';
 import 'package:final_challenge/util/clean_screen.dart';
 import 'package:final_challenge/util/read.dart';
 import 'package:final_challenge/util/task_list.dart';
 
-class MusicClass implements Page {
+class PlaySoccer implements Page {
   @override
   void init() {
     Clean.screen();
@@ -15,29 +16,27 @@ class MusicClass implements Page {
         Read.readDouble(message: 'Horário de início da atividade:');
     double closingtime =
         Read.readDouble(message: 'Horário de encerramento da atividade:');
-    String instrumentType = Read.readString(
-        message:
-            'Tipo de instrumento? \ncordas\nsopro\npercussão\nvoz\noutros');
-    String instrument =
-        Read.readString(message: 'Qual instrumento você está estudando?');
-    String courseLevel = Read.readString(message: 'Nível do curso:');
+    String teamName = Read.readString(message: 'Nome do seu time:');
+    String position = Read.readString(message: 'Sua posição no time:');
+    int shirtNumber = Read.readInt(message: 'Número da sua camisa:');
 
-    MusicClassModel musicClass = MusicClassModel(
+    PlaySoccerModel playSoccer = PlaySoccerModel(
       name: name,
       date: date,
       place: place,
       startTime: startTime,
       closingtime: closingtime,
-      instrument: instrument,
-      instrumentType: instrumentType,
-      courseLevel: courseLevel,
+      taskShift: TaskShift.diurno,
+      teamName: teamName,
+      position: position,
+      shirtNumber: shirtNumber,
     );
 
-    taskList.add(musicClass);
+    TaskList().addTask(playSoccer);
 
     Clean.screen();
     print('-- Tarefa criada, com sucesso! --\n');
 
-    musicClass.showTask();
+    playSoccer.showTask();
   }
 }

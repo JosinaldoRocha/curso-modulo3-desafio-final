@@ -33,7 +33,7 @@ class DanceClass implements Page {
       danceGroupName: danceGroupName,
     );
 
-    taskList.add(danceClass);
+    TaskList().addTask(danceClass);
 
     Clean.screen();
     print('-- Tarefa criada, com sucesso! --\n');

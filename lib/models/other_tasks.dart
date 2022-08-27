@@ -1,5 +1,7 @@
 import 'package:final_challenge/interfaces/task_interface.dart';
 import 'package:final_challenge/enums/task_enum.dart';
+import 'package:final_challenge/util/clean_screen.dart';
+import 'package:final_challenge/util/read.dart';
 
 class OtherTaskModel implements TasksInterface {
   OtherTaskModel({
@@ -121,4 +123,25 @@ class OtherTaskModel implements TasksInterface {
 
   @override
   TaskType taskType = TaskType.outra;
+
+  @override
+  void runTask() {
+    int option = 0;
+    do {
+      print('Escolha uma ação');
+      option = Read.readInt(
+          message: '[1] Interagir\n[2] Beber água\n[3] Finalizar atividade');
+
+      Clean.screen();
+      if (option == 1) {
+        interacting();
+      } else if (option == 2) {
+        drinkWater();
+      } else if (option == 3) {
+      } else {
+        print('Opção inválida');
+      }
+    } while (option != 3);
+    finishTask();
+  }
 }

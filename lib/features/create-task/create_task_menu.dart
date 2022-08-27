@@ -1,9 +1,9 @@
-import 'package:final_challenge/features/tasks/camping.dart';
-import 'package:final_challenge/features/tasks/dance_class.dart';
-import 'package:final_challenge/features/tasks/music_class.dart';
-import 'package:final_challenge/features/tasks/other_tasks.dart';
+import 'package:final_challenge/features/create-task/components/camping.dart';
+import 'package:final_challenge/features/create-task/components/dance_class.dart';
+import 'package:final_challenge/features/create-task/components/music_class.dart';
+import 'package:final_challenge/features/create-task/components/other_tasks.dart';
+import 'package:final_challenge/features/create-task/components/play_soccer.dart';
 import 'package:final_challenge/interfaces/page_interface.dart';
-import 'package:final_challenge/features/tasks/play_soccer.dart';
 import 'package:final_challenge/util/clean_screen.dart';
 import 'package:final_challenge/util/read.dart';
 

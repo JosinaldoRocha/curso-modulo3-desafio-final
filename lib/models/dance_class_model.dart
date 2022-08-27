@@ -1,5 +1,7 @@
 import 'package:final_challenge/enums/task_enum.dart';
 import 'package:final_challenge/interfaces/task_interface.dart';
+import 'package:final_challenge/util/clean_screen.dart';
+import 'package:final_challenge/util/read.dart';
 
 class DanceClassModel implements TasksInterface {
   DanceClassModel({
@@ -225,4 +227,45 @@ class DanceClassModel implements TasksInterface {
 
   @override
   String name;
+
+  @override
+  void runTask() {
+    int option = 0;
+    do {
+      print('Escolha uma ação');
+      option = Read.readInt(
+          message:
+              '[1] Estudando dança\n[2] Treinar passes\n[3] Pausa para distração\n'
+              '[4] Parar de treinar passes\n[5] Fazer uma apresentação\n[6] Beber água\n'
+              '[7] Descansar\n[8] Aprender novo passe\n[9] Ver todos os passes aprendidos\n'
+              '[10] Ver meu nível como dançarino\n[11] Finalizar atividade');
+
+      Clean.screen();
+      if (option == 1) {
+        studyingDance();
+      } else if (option == 2) {
+        trainingPasses();
+      } else if (option == 3) {
+        isNotStudying();
+      } else if (option == 4) {
+        isNotTrainingdance();
+      } else if (option == 5) {
+        dancePerformance();
+      } else if (option == 6) {
+        drinkWater();
+      } else if (option == 7) {
+        resting();
+      } else if (option == 8) {
+        newPass();
+      } else if (option == 9) {
+        learnedPasses();
+      } else if (option == 10) {
+        seeDancerLevel();
+      } else if (option == 11) {
+      } else {
+        print('Opção inválida');
+      }
+    } while (option != 11);
+    finishTask();
+  }
 }

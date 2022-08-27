@@ -16,4 +16,5 @@ abstract class TasksInterface {
   void taskcompleted() {}
   void showTask() {}
   void finishTask() {}
+  void runTask() {}
 }

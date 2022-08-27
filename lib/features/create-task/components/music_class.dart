@@ -1,10 +1,10 @@
 import 'package:final_challenge/interfaces/page_interface.dart';
-import 'package:final_challenge/models/camping_model.dart';
+import 'package:final_challenge/models/music_class_model.dart';
 import 'package:final_challenge/util/clean_screen.dart';
 import 'package:final_challenge/util/read.dart';
 import 'package:final_challenge/util/task_list.dart';
 
-class Camping implements Page {
+class MusicClass implements Page {
   @override
   void init() {
     Clean.screen();
@@ -15,23 +15,29 @@ class Camping implements Page {
         Read.readDouble(message: 'Horário de início da atividade:');
     double closingtime =
         Read.readDouble(message: 'Horário de encerramento da atividade:');
-    int numberOfParticipants =
-        Read.readInt(message: 'Quantidade de participantes');
+    String instrumentType = Read.readString(
+        message:
+            'Tipo de instrumento? \ncordas\nsopro\npercussão\nvoz\noutros');
+    String instrument =
+        Read.readString(message: 'Qual instrumento você está estudando?');
+    String courseLevel = Read.readString(message: 'Nível do curso:');
 
-    CampingModel camping = CampingModel(
+    MusicClassModel musicClass = MusicClassModel(
       name: name,
       date: date,
       place: place,
       startTime: startTime,
       closingtime: closingtime,
-      numberOfParticipants: numberOfParticipants,
+      instrument: instrument,
+      instrumentType: instrumentType,
+      courseLevel: courseLevel,
     );
 
-    taskList.add(camping);
+    TaskList().addTask(musicClass);
 
     Clean.screen();
     print('-- Tarefa criada, com sucesso! --\n');
 
-    camping.showTask();
+    musicClass.showTask();
   }
 }
